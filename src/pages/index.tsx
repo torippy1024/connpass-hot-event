@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom';
+import {AiFillGithub} from 'react-icons/ai';
 
 const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ const HomePage = () => {
       <Link to='/users/123'>
         <button className='btn'>user</button>
       </Link>
+      <AiFillGithub size={32} />
     </div>
   );
 };
