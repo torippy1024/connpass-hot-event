@@ -1,3 +1,5 @@
+import firebase from '../firebase';
+
 const AcountIcon = () => {
   return (
     <div className='dropdown dropdown-end'>
@@ -17,7 +19,14 @@ const AcountIcon = () => {
           <a>Settings</a>
         </li>
         <li>
-          <a>Logout</a>
+          <a
+            onClick={() => {
+              firebase.auth().signOut();
+              console.log('logout');
+            }}
+          >
+            Logout
+          </a>
         </li>
       </ul>
     </div>

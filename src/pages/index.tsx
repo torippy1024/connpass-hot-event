@@ -12,6 +12,9 @@ const HomePage = () => {
         <Link to='/users/123'>
           <button className='btn'>user</button>
         </Link>
+        <Link to='/auth/login'>
+          <button className='btn'>login</button>
+        </Link>
       </div>
     </div>
   );

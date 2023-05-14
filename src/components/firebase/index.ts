@@ -1,4 +1,4 @@
-import {initializeApp} from 'firebase/app';
+import firebase from 'firebase/compat/app';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -11,6 +11,12 @@ const firebaseConfig = {
   mesurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
-export default app;
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log(user.email);
+  }
+});
+
+export default firebase;
