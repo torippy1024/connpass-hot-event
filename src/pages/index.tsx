@@ -1,15 +1,18 @@
 import {Link} from 'react-router-dom';
-import {AiFillGithub} from 'react-icons/ai';
+import {AiFillHome} from 'react-icons/ai';
 
 const HomePage = () => {
   return (
-    <div>
-      <div className='font-bold underline text-5xl my-3'>Home</div>
-      <div>Hello World!</div>
-      <Link to='/users/123'>
-        <button className='btn'>user</button>
-      </Link>
-      <AiFillGithub size={32} />
+    <div className='max-w-3xl mx-auto'>
+      <div className='flex items-center justify-center m-2 text-3xl'>
+        <AiFillHome /> home
+      </div>
+      <div className='bg-base-100 m-2 p-4 rounded-xl'>
+        <div>Hello World!</div>
+        <Link to='/users/123'>
+          <button className='btn'>user</button>
+        </Link>
+      </div>
     </div>
   );
 };
