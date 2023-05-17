@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react';
 import {AiOutlineLogin} from 'react-icons/ai';
 import * as firebaseui from 'firebaseui';
 import {GoogleAuthProvider, EmailAuthProvider} from 'firebase/auth';
@@ -15,6 +16,12 @@ const HomePage = () => {
     ],
   };
 
+  const [user, setUser] = useState(firebase.auth().currentUser);
+
+  useEffect(() => {
+    setUser(firebase.auth().currentUser);
+  }, [firebase.auth().currentUser]);
+
   return (
     <div className='max-w-3xl mx-auto'>
       <div className='flex items-center justify-center m-2 text-3xl'>
@@ -26,8 +33,10 @@ const HomePage = () => {
           firebaseAuth={firebase.auth()}
         />
       </div>
-      <div>{firebase.auth().currentUser ? 'success' : 'failed'}</div>
-      <div>{firebase.auth().currentUser?.email}</div>
+      <div>{user ? 'success' : 'failed'}</div>
+      <div>{user?.email}</div>
+      <div>{user?.displayName}</div>
+      <div>{user?.photoURL}</div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import {AiOutlineMenu} from 'react-icons/ai';
 import AcountIcon from './AcountIcon';
 import HeaderContents from './HeaderContents';
+import firebase from '../firebase';
+import {Link} from 'react-router-dom';
 
 const Navbar = ({drawerId}: {drawerId: string}) => {
   return (
@@ -17,7 +19,13 @@ const Navbar = ({drawerId}: {drawerId: string}) => {
         <HeaderContents />
       </div>
       <div className='flex-none'>
-        <AcountIcon />
+        {firebase.auth().currentUser ? (
+          <AcountIcon />
+        ) : (
+          <Link to='/auth/login'>
+            <button className='btn btn-ghost'>login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
