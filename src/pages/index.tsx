@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom';
 import {AiFillHome} from 'react-icons/ai';
-import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
+import {useSelector} from '../redux/hooks/useSelector';
 
 const HomePage = () => {
   const user = useSelector((state: RootState) => state.auth.user);
+
   return (
     <div className='max-w-3xl mx-auto'>
       <div className='flex items-center justify-center m-2 text-3xl'>

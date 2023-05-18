@@ -3,8 +3,6 @@ import * as firebaseui from 'firebaseui';
 import {GoogleAuthProvider, EmailAuthProvider} from 'firebase/auth';
 import StyledFirebaseAuth from '../../components/firebase/auth/StyledFirebaseAuth';
 import firebase from '../../components/firebase';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../redux/store';
 
 const HomePage = () => {
   const uiConfig: firebaseui.auth.Config = {
@@ -15,8 +13,6 @@ const HomePage = () => {
       EmailAuthProvider.PROVIDER_ID,
     ],
   };
-  const user = useSelector((state: RootState) => state.auth.user);
-
   return (
     <div className='max-w-3xl mx-auto'>
       <div className='flex items-center justify-center m-2 text-3xl'>
@@ -28,10 +24,6 @@ const HomePage = () => {
           firebaseAuth={firebase.auth()}
         />
       </div>
-      <div>{user ? 'success' : 'failed'}</div>
-      <div>{user?.email}</div>
-      <div>{user?.displayName}</div>
-      <div>{user?.photoURL}</div>
     </div>
   );
 };

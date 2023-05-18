@@ -1,9 +1,10 @@
+import {useDispatch} from '../../redux/hooks/useDispatch';
 import {logout} from '../../redux/slices/authSlice';
-import {useDispatch} from 'react-redux';
 import firebase from '../firebase';
 
 const AcountIcon = () => {
   const dispatch = useDispatch();
+
   return (
     <div className='dropdown dropdown-end'>
       <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>

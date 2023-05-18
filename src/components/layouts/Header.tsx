@@ -2,8 +2,8 @@ import {AiOutlineMenu} from 'react-icons/ai';
 import AcountIcon from './AcountIcon';
 import HeaderContents from './HeaderContents';
 import {Link} from 'react-router-dom';
-import {useSelector} from 'react-redux';
 import {RootState} from '../../redux/store';
+import {useSelector} from '../../redux/hooks/useSelector';
 
 const Navbar = ({drawerId}: {drawerId: string}) => {
   const user = useSelector((state: RootState) => state.auth.user);

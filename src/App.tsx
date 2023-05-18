@@ -3,9 +3,8 @@ import {useRoutes} from 'react-router-dom';
 import routes from '~react-pages';
 import Layout from './components/layouts/Layout';
 import firebase from './components/firebase';
-import {login} from './redux/slices/authSlice';
-import './styles/index.css';
-import {useDispatch} from 'react-redux';
+import {login, logout} from './redux/slices/authSlice';
+import {useDispatch} from './redux/hooks/useDispatch';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,10 +15,13 @@ const App = () => {
       .onAuthStateChanged((user) => {
         if (user) {
           dispatch(login(user));
+        } else {
+          dispatch(logout());
         }
       });
     return () => unregisterAuthObserver();
   }, [dispatch]);
+
   return (
     <Layout>
       <Suspense fallback={<p>Loading...</p>}>{useRoutes(routes)}</Suspense>

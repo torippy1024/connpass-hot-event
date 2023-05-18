@@ -9,6 +9,7 @@ type HeaderType = {
 
 const Layout = ({children}: HeaderType) => {
   const drawerId = 'my-drawer';
+
   return (
     <div className='drawer'>
       <input id={drawerId} type='checkbox' className='drawer-toggle' />
