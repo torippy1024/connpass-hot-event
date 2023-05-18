@@ -14,10 +14,4 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log(user.email);
-  }
-});
-
 export default firebase;

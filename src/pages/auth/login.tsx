@@ -1,10 +1,10 @@
-import {useState, useEffect} from 'react';
 import {AiOutlineLogin} from 'react-icons/ai';
 import * as firebaseui from 'firebaseui';
 import {GoogleAuthProvider, EmailAuthProvider} from 'firebase/auth';
-import 'firebase/compat/auth';
 import StyledFirebaseAuth from '../../components/firebase/auth/StyledFirebaseAuth';
 import firebase from '../../components/firebase';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../redux/store';
 
 const HomePage = () => {
   const uiConfig: firebaseui.auth.Config = {
@@ -15,12 +15,7 @@ const HomePage = () => {
       EmailAuthProvider.PROVIDER_ID,
     ],
   };
-
-  const [user, setUser] = useState(firebase.auth().currentUser);
-
-  useEffect(() => {
-    setUser(firebase.auth().currentUser);
-  }, [firebase.auth().currentUser]);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <div className='max-w-3xl mx-auto'>

@@ -1,10 +1,13 @@
 import {AiOutlineMenu} from 'react-icons/ai';
 import AcountIcon from './AcountIcon';
 import HeaderContents from './HeaderContents';
-import firebase from '../firebase';
 import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../redux/store';
 
 const Navbar = ({drawerId}: {drawerId: string}) => {
+  const user = useSelector((state: RootState) => state.auth.user);
+
   return (
     <div className='navbar bg-base-100 border border-base-200'>
       <div className='flex-none'>
@@ -19,7 +22,7 @@ const Navbar = ({drawerId}: {drawerId: string}) => {
         <HeaderContents />
       </div>
       <div className='flex-none'>
-        {firebase.auth().currentUser ? (
+        {user ? (
           <AcountIcon />
         ) : (
           <Link to='/auth/login'>
