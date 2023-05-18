@@ -13,8 +13,8 @@ const App = () => {
     const unregisterAuthObserver = firebase
       .auth()
       .onAuthStateChanged((user) => {
-        if (user) {
-          dispatch(login(user));
+        if (user?.providerData[0]) {
+          dispatch(login(user.providerData[0]));
         } else {
           dispatch(logout());
         }
