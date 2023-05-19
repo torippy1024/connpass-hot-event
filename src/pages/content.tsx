@@ -12,8 +12,12 @@ const ContentPage = () => {
         Content
       </div>
       <div className='bg-base-100 m-2 p-4 rounded-xl'>
-        {user ? (
-          <div>hoge</div>
+        {user === undefined ? (
+          <div>loading...</div>
+        ) : user ? (
+          <div>
+            ログイン中なのでこのログインユーザー限定コンテンツが閲覧できています。
+          </div>
         ) : (
           <div>
             <div className='text-center'>

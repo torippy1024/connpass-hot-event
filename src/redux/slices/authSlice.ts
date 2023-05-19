@@ -2,10 +2,10 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {UserInfo} from 'firebase/auth';
 
 type AuthState = {
-  user: UserInfo | null;
+  user?: UserInfo | null;
 };
 
-const initialState: AuthState = {user: null};
+const initialState: AuthState = {};
 
 const authSlice = createSlice({
   name: 'auth',
