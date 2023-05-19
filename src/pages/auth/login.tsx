@@ -1,12 +1,16 @@
 import {AiOutlineLogin} from 'react-icons/ai';
 import * as firebaseui from 'firebaseui';
+import {useLocation} from 'react-router-dom';
 import {GoogleAuthProvider, EmailAuthProvider, getAuth} from 'firebase/auth';
 import StyledFirebaseAuth from '../../components/auth/StyledFirebaseAuth';
 
 const HomePage = () => {
+  const location = useLocation();
+  const referrer: string = location.state?.from || '/';
+
   const uiConfig: firebaseui.auth.Config = {
     signInFlow: 'redirect',
-    signInSuccessUrl: '/auth/login',
+    signInSuccessUrl: referrer,
     signInOptions: [
       GoogleAuthProvider.PROVIDER_ID,
       EmailAuthProvider.PROVIDER_ID,
