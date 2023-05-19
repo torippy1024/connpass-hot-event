@@ -1,16 +1,20 @@
 import {getAuth, signOut} from 'firebase/auth';
 import {useDispatch} from '../../redux/hooks/useDispatch';
 import {logout} from '../../redux/slices/authSlice';
+import iconDefault from '../../assets/img/iconDefault.png';
+import {useSelector} from '../../redux/hooks/useSelector';
+import {RootState} from '../../redux/store';
 
 const AcountIcon = () => {
   const dispatch = useDispatch();
   const auth = getAuth();
+  const user = useSelector((state: RootState) => state.auth.user);
 
   return (
     <div className='dropdown dropdown-end'>
       <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
         <div className='w-10 rounded-full'>
-          <img src='/img/icon/icon.png' />
+          <img src={user?.photoURL ?? iconDefault} />
         </div>
       </label>
       <ul
