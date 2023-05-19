@@ -1,8 +1,7 @@
 import {AiOutlineLogin} from 'react-icons/ai';
 import * as firebaseui from 'firebaseui';
-import {GoogleAuthProvider, EmailAuthProvider} from 'firebase/auth';
+import {GoogleAuthProvider, EmailAuthProvider, getAuth} from 'firebase/auth';
 import StyledFirebaseAuth from '../../components/firebase/auth/StyledFirebaseAuth';
-import firebase from '../../components/firebase';
 
 const HomePage = () => {
   const uiConfig: firebaseui.auth.Config = {
@@ -19,10 +18,7 @@ const HomePage = () => {
         <AiOutlineLogin /> Sign in
       </div>
       <div className='bg-base-100 m-2 p-4 rounded-xl'>
-        <StyledFirebaseAuth
-          uiConfig={uiConfig}
-          firebaseAuth={firebase.auth()}
-        />
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={getAuth()} />
       </div>
     </div>
   );

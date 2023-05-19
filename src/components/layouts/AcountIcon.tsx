@@ -1,9 +1,10 @@
+import {getAuth, signOut} from 'firebase/auth';
 import {useDispatch} from '../../redux/hooks/useDispatch';
 import {logout} from '../../redux/slices/authSlice';
-import firebase from '../firebase';
 
 const AcountIcon = () => {
   const dispatch = useDispatch();
+  const auth = getAuth();
 
   return (
     <div className='dropdown dropdown-end'>
@@ -25,12 +26,9 @@ const AcountIcon = () => {
         <li>
           <a
             onClick={() => {
-              firebase
-                .auth()
-                .signOut()
-                .then(() => {
-                  console.log('logout');
-                });
+              signOut(auth).then(() => {
+                console.log('logout');
+              });
               dispatch(logout());
             }}
           >
