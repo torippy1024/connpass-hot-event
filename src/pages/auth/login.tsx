@@ -1,7 +1,7 @@
 import {AiOutlineLogin} from 'react-icons/ai';
 import * as firebaseui from 'firebaseui';
 import {GoogleAuthProvider, EmailAuthProvider, getAuth} from 'firebase/auth';
-import StyledFirebaseAuth from '../../components/firebase/auth/StyledFirebaseAuth';
+import StyledFirebaseAuth from '../../components/auth/StyledFirebaseAuth';
 
 const HomePage = () => {
   const uiConfig: firebaseui.auth.Config = {
