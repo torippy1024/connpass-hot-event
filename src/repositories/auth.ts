@@ -4,7 +4,7 @@ import {
   signOut as firebaseSignOut,
 } from 'firebase/auth';
 import {doc, getDoc, setDoc, getFirestore} from 'firebase/firestore';
-import {login, logout} from '../redux/slices/authSlice';
+import {AuthUser, login, logout} from '../redux/slices/authSlice';
 import {AppDispatch} from '../redux/store';
 
 export const monitorAuthState = (dispatch: AppDispatch) => {
@@ -15,19 +15,19 @@ export const monitorAuthState = (dispatch: AppDispatch) => {
       const docRef = doc(db, 'users', user.uid);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        dispatch(login(user));
-        // dispatch(update(docSnap.data() as User));
+        const dbUser = docSnap.data() as AuthUser;
+        dispatch(login(dbUser));
       } else {
         const newUser = {
           uid: user.uid,
-          displayName: user.displayName,
           email: user.email,
-          twitterUrl: '',
+          displayName: user.displayName,
+          phoneNumber: user.phoneNumber,
+          photoURL: user.photoURL,
         };
         await setDoc(docRef, newUser);
-        dispatch(login(user));
+        dispatch(login(newUser));
       }
-      // dispatch(login(user));
     } else {
       dispatch(logout());
     }

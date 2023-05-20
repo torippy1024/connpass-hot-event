@@ -23,7 +23,6 @@ const HomePage = () => {
         <div>name: {user?.displayName}</div>
         <div>tel: {user?.phoneNumber}</div>
         <div>photo: {user?.photoURL}</div>
-        <div>id: {user?.providerId}</div>
         <div>uid: {user?.uid}</div>
       </div>
     </div>
