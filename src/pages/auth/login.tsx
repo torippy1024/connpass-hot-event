@@ -1,31 +1,17 @@
 import {AiOutlineLogin} from 'react-icons/ai';
-import * as firebaseui from 'firebaseui';
-import {useLocation} from 'react-router-dom';
-import {GoogleAuthProvider, EmailAuthProvider, getAuth} from 'firebase/auth';
-import StyledFirebaseAuth from '../../components/auth/StyledFirebaseAuth';
+import AuthUI from '../../components/auth/AuthUI';
 
-const HomePage = () => {
-  const location = useLocation();
-  const referrer: string = location.state?.from || '/';
-
-  const uiConfig: firebaseui.auth.Config = {
-    signInFlow: 'redirect',
-    signInSuccessUrl: referrer,
-    signInOptions: [
-      GoogleAuthProvider.PROVIDER_ID,
-      EmailAuthProvider.PROVIDER_ID,
-    ],
-  };
+const LoginPage = () => {
   return (
     <div className='max-w-3xl mx-auto'>
       <div className='flex items-center justify-center m-2 text-3xl'>
         <AiOutlineLogin /> Sign in
       </div>
       <div className='bg-base-100 m-2 p-4 rounded-xl'>
-        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={getAuth()} />
+        <AuthUI />
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default LoginPage;

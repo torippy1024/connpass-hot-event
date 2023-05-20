@@ -1,13 +1,12 @@
-import {getAuth, signOut} from 'firebase/auth';
 import {useDispatch} from '../../redux/hooks/useDispatch';
 import {logout} from '../../redux/slices/authSlice';
 import iconDefault from '../../assets/img/iconDefault.png';
 import {useSelector} from '../../redux/hooks/useSelector';
 import {RootState} from '../../redux/store';
+import {signOut} from '../../repositories/auth';
 
 const AcountIcon = () => {
   const dispatch = useDispatch();
-  const auth = getAuth();
   const user = useSelector((state: RootState) => state.auth.user);
 
   return (
@@ -30,9 +29,7 @@ const AcountIcon = () => {
         <li>
           <a
             onClick={() => {
-              signOut(auth).then(() => {
-                console.log('logout');
-              });
+              signOut();
               dispatch(logout());
             }}
           >

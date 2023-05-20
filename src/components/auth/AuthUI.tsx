@@ -1,7 +1,13 @@
 import {useEffect, useRef, useState} from 'react';
-import {onAuthStateChanged} from 'firebase/auth';
+import {
+  EmailAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  onAuthStateChanged,
+} from 'firebase/auth';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
+import {useLocation} from 'react-router';
 
 interface Props {
   // The Firebase UI Web UI Config object.
@@ -16,7 +22,7 @@ interface Props {
   className?: string;
 }
 
-const StyledFirebaseAuth = ({
+export const StyledFirebaseAuth = ({
   uiConfig,
   firebaseAuth,
   className,
@@ -54,4 +60,19 @@ const StyledFirebaseAuth = ({
   return <div className={className} ref={elementRef} />;
 };
 
-export default StyledFirebaseAuth;
+const AuthUI = () => {
+  const location = useLocation();
+  const referrer: string = location.state?.from || '/';
+
+  const uiConfig: firebaseui.auth.Config = {
+    signInFlow: 'redirect',
+    signInSuccessUrl: referrer,
+    signInOptions: [
+      GoogleAuthProvider.PROVIDER_ID,
+      EmailAuthProvider.PROVIDER_ID,
+    ],
+  };
+  return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={getAuth()} />;
+};
+
+export default AuthUI;
