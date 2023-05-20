@@ -4,7 +4,7 @@ import {
   signOut as firebaseSignOut,
 } from 'firebase/auth';
 import {doc, getDoc, setDoc, getFirestore} from 'firebase/firestore';
-import {AuthUser, login, logout} from '../redux/slices/authSlice';
+import {AuthUser, login, logout, update} from '../redux/slices/authSlice';
 import {AppDispatch} from '../redux/store';
 
 export const monitorAuthState = (dispatch: AppDispatch) => {
@@ -36,4 +36,11 @@ export const monitorAuthState = (dispatch: AppDispatch) => {
 
 export const signOut = () => {
   firebaseSignOut(getAuth());
+};
+
+export const updateAuth = async (user: AuthUser, dispatch: AppDispatch) => {
+  const db = getFirestore();
+  const docRef = doc(db, 'users', user.uid);
+  await setDoc(docRef, user);
+  dispatch(update(user));
 };

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export type AuthUser = {
-  uid: string | null;
+  uid: string;
   email: string | null;
   displayName: string | null;
   phoneNumber: string | null;
