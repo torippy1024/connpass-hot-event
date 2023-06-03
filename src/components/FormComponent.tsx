@@ -3,12 +3,12 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {ZodSchema, z} from 'zod';
 import {useSelector} from 'react-redux';
 import {RootState} from '../redux/store';
-import {updateAuth} from '../repositories/auth';
 import {useDispatch} from '../redux/hooks/useDispatch';
+import {updateAuth} from '../services/auth';
 
 const FormData = [
   {
-    id: 'name',
+    id: 'displayName',
     schema: z.string().nonempty('Required'),
     name: 'Name',
     type: 'text',
@@ -63,16 +63,20 @@ const FormComponent = () => {
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: user?.displayName,
+      displayName: user?.displayName,
       email: user?.email,
       phoneNumber: user?.phoneNumber,
       photoURL: user?.photoURL,
     },
   });
 
-  const onSubmit = async (data: any) => {
+  const onSubmit: Parameters<typeof handleSubmit>[0] = async (data) => {
+    console.log(data);
     if (user) {
-      updateAuth({...user, ...data}, dispatch);
+      const filteredObject = Object.fromEntries(
+        Object.entries(data).filter(([_, value]) => value !== undefined),
+      );
+      updateAuth({...user, ...filteredObject}, dispatch);
     }
   };
 
