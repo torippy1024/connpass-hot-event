@@ -1,9 +1,8 @@
 import {useDispatch} from '../../redux/hooks/useDispatch';
-import {logout} from '../../redux/slices/authSlice';
 import iconDefault from '../../assets/img/iconDefault.png';
 import {useSelector} from '../../redux/hooks/useSelector';
 import {RootState} from '../../redux/store';
-import {signOut} from '../../repositories/auth';
+import {signOut} from '../../services/auth';
 
 const AcountIcon = () => {
   const dispatch = useDispatch();
@@ -29,8 +28,7 @@ const AcountIcon = () => {
         <li>
           <a
             onClick={() => {
-              signOut();
-              dispatch(logout());
+              signOut(dispatch);
             }}
           >
             Logout

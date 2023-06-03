@@ -2,13 +2,10 @@ import {Link} from 'react-router-dom';
 import {AiFillHome} from 'react-icons/ai';
 import {RootState} from '../redux/store';
 import {useSelector} from '../redux/hooks/useSelector';
-import {useDispatch} from '../redux/hooks/useDispatch';
-import {updateAuth} from '../repositories/auth';
 import FormComponent from '../components/FormComponent';
 
 const HomePage = () => {
   const user = useSelector((state: RootState) => state.auth.user);
-  const dispatch = useDispatch();
 
   return (
     <div className='max-w-3xl mx-auto'>

@@ -1,12 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-
-export type AuthUser = {
-  uid: string;
-  email: string | null;
-  displayName: string | null;
-  phoneNumber: string | null;
-  photoURL: string | null;
-};
+import AuthUser from '../../models/AuthUser';
 
 type AuthState = {
   user?: AuthUser | null;

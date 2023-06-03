@@ -3,7 +3,7 @@ import {useRoutes} from 'react-router-dom';
 import routes from '~react-pages';
 import Layout from './components/layouts/Layout';
 import {useDispatch} from './redux/hooks/useDispatch';
-import {monitorAuthState} from './repositories/auth';
+import {monitorAuthState} from './services/auth';
 
 const App = () => {
   const dispatch = useDispatch();

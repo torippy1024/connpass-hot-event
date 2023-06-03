@@ -1,46 +1,20 @@
 import {
   getAuth,
-  onAuthStateChanged,
+  onAuthStateChanged as onFirebaseAuthStateChanged,
   signOut as firebaseSignOut,
 } from 'firebase/auth';
-import {doc, getDoc, setDoc, getFirestore} from 'firebase/firestore';
-import {AuthUser, login, logout, update} from '../redux/slices/authSlice';
-import {AppDispatch} from '../redux/store';
+import AuthUser from '../models/AuthUser';
+import {convertFirebaseUserToAuthUser} from './AuthUser';
 
-export const monitorAuthState = (dispatch: AppDispatch) => {
-  const db = getFirestore();
-
-  onAuthStateChanged(getAuth(), async (user) => {
-    if (user) {
-      const docRef = doc(db, 'users', user.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        const dbUser = docSnap.data() as AuthUser;
-        dispatch(login(dbUser));
-      } else {
-        const newUser = {
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-          phoneNumber: user.phoneNumber,
-          photoURL: user.photoURL,
-        };
-        await setDoc(docRef, newUser);
-        dispatch(login(newUser));
-      }
-    } else {
-      dispatch(logout());
-    }
+export const onAuthStateChanged = (
+  callback: (user: AuthUser | null) => Promise<void>,
+) => {
+  onFirebaseAuthStateChanged(getAuth(), async (user) => {
+    const authUser = convertFirebaseUserToAuthUser(user);
+    callback(authUser);
   });
 };
 
 export const signOut = () => {
   firebaseSignOut(getAuth());
-};
-
-export const updateAuth = async (user: AuthUser, dispatch: AppDispatch) => {
-  const db = getFirestore();
-  const docRef = doc(db, 'users', user.uid);
-  await setDoc(docRef, user);
-  dispatch(update(user));
 };
