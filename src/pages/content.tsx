@@ -1,10 +1,8 @@
-import {Link, useLocation} from 'react-router-dom';
 import {useSelector} from '../redux/hooks/useSelector';
 import {RootState} from '../redux/store';
 
 const ContentPage = () => {
   const user = useSelector((state: RootState) => state.auth.user);
-  const location = useLocation();
 
   return (
     <div className='max-w-3xl mx-auto'>
