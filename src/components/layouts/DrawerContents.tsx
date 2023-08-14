@@ -10,10 +10,6 @@ const DrawerContents = () => {
       text: 'user',
       to: '/users/123',
     },
-    {
-      text: 'login',
-      to: '/auth/login',
-    },
   ];
   return (
     <ul className='menu p-4 w-80 bg-base-100'>

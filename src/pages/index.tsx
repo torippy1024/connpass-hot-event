@@ -17,9 +17,6 @@ const HomePage = () => {
         <Link to='/users/123'>
           <button className='btn'>user</button>
         </Link>
-        <Link to='/auth/login'>
-          <button className='btn'>login</button>
-        </Link>
         {user && <FormComponent />}
         <div>email: {user?.email}</div>
         <div>name: {user?.displayName}</div>

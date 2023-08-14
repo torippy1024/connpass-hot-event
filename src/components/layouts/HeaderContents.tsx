@@ -10,10 +10,6 @@ const HeaderContents = () => {
       text: 'user',
       to: '/users/123',
     },
-    {
-      text: 'login',
-      to: '/auth/login',
-    },
   ];
   return (
     <ul className='menu menu-horizontal'>

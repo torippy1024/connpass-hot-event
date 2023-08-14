@@ -23,11 +23,6 @@ const ContentPage = () => {
             <div className='text-center'>
               このページを閲覧するにはログインが必要です。
             </div>
-            <div className='flex justify-center'>
-              <Link to={'/auth/login'} state={{from: location.pathname}}>
-                <button className='btn text-center'>ログイン</button>
-              </Link>
-            </div>
           </div>
         )}
       </div>

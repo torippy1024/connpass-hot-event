@@ -21,15 +21,6 @@ const Navbar = ({drawerId}: {drawerId: string}) => {
       <div className='flex-none hidden lg:block'>
         <HeaderContents />
       </div>
-      <div className='flex-none'>
-        {user ? (
-          <AcountIcon />
-        ) : (
-          <Link to='/auth/login'>
-            <button className='btn btn-ghost'>login</button>
-          </Link>
-        )}
-      </div>
     </div>
   );
 };
