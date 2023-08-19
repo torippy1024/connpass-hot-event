@@ -6,10 +6,6 @@ const HeaderContents = () => {
       text: 'home',
       to: '/',
     },
-    {
-      text: 'user',
-      to: '/users/123',
-    },
   ];
   return (
     <ul className='menu menu-horizontal'>

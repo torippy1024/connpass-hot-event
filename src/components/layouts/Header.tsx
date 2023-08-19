@@ -10,7 +10,7 @@ const Navbar = ({drawerId}: {drawerId: string}) => {
         </label>
       </div>
       <div className='flex-1'>
-        <a className='btn btn-ghost normal-case text-xl'>daisyUI</a>
+        <a className='btn btn-ghost normal-case text-xl'>Connpass Hot Event</a>
       </div>
       <div className='flex-none hidden lg:block'>
         <HeaderContents />

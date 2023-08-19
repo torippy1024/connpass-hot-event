@@ -15,7 +15,7 @@ const Layout = ({children}: HeaderType) => {
       <input id={drawerId} type='checkbox' className='drawer-toggle' />
       <div className='drawer-content flex flex-col min-h-screen'>
         <Navbar drawerId={drawerId} />
-        <div className='flex-1 bg-base-200 justify-center items-center p-4'>
+        <div className='flex-1 bg-gradient-to-r from-teal-50 to-cyan-50 justify-center items-center p-4'>
           {children}
         </div>
         <Footer />
