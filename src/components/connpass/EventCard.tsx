@@ -1,4 +1,5 @@
 import {ConnpassEventDataType} from '../../models/Connpass';
+import EventCardIcon from './EventCardIcon';
 
 const EventCard = ({event}: {event: ConnpassEventDataType}) => {
   const startTime = event.started_at.slice(11, 16);
@@ -6,13 +7,13 @@ const EventCard = ({event}: {event: ConnpassEventDataType}) => {
   const description = event.description.replace(/(<([^>]+)>)/gi, '');
   return (
     <div className='border border-teal-900 rounded bg-gradient-to-r from-teal-50 to-cyan-50 my-1 shadow flex'>
-      <div className='w-24 flex-none border-r rounded-l flex justify-center items-center bg-white'>
-        ICON
+      <div className='w-24 flex-none border-r border-teal-900 rounded-l flex flex-col justify-center items-center bg-white text-teal-600'>
+        <EventCardIcon text={description} />
       </div>
       <div className='flex-1'>
         <div className='border-b border-teal-900 rounded-tr bg-gradient-to-r from-teal-500 to-cyan-500 text-teal-50 flex justify-between items-center p-1'>
           <div>
-            参加人数：
+            <span className='hidden sm:inline'>参加人数：</span>
             <span className='text-lg'>{event.accepted}</span>
             {event.limit && ` / ${event.limit}`} 人
           </div>
