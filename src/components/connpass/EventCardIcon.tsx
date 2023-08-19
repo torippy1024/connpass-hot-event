@@ -131,7 +131,7 @@ const EventCardIcon = ({text}: {text: string}) => {
   const keyword = getKeyword(text, iconList);
 
   return (
-    <div className='w-24 flex-none border-r border-teal-900 rounded-l flex flex-col justify-center items-center bg-white text-teal-600'>
+    <div className='w-24 flex-none flex flex-col justify-center items-center text-teal-600'>
       <div>{keyword?.icon}</div>
       <div>{keyword?.key}</div>
     </div>
