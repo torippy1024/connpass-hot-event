@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import {AiFillCalendar} from 'react-icons/ai';
 import {EventsDatesType} from '../../models/Connpass';
 
 const fetcher = <T,>(url: string): Promise<T> =>
@@ -21,11 +22,13 @@ const EventsHeader = ({
   };
   return (
     <div className='flex justify-between items-center border-b'>
-      <div className='flex items-center justify-center m-2 text-3xl'>
+      <div className='flex items-center justify-center m-2 text-3xl text-teal-900'>
+        <AiFillCalendar />{' '}
         {eventsDates &&
           `${eventsDates.days[selectedValue].slice(4, 6)}/${eventsDates.days[
             selectedValue
-          ].slice(6, 8)}のイベント一覧`}
+          ].slice(6, 8)}`}
+        <span className='hidden sm:inline'>のイベント一覧</span>
       </div>
       <div className=''>
         <select
